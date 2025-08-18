@@ -1,0 +1,91 @@
+#include <iostream>
+
+using namespace std;
+
+int main(void)
+{
+	int HP, MP, AD, AM;   //AM디펜스
+
+	cout << "HP와 MP를 입력하세요.";
+	cin >> HP >> MP;
+	while (60 > HP || 60 > MP)
+	{
+		cout << "HP와 MP가 너무 작습니다. 다시 입력해주세요.";
+		cin >> HP >> MP;
+	}
+
+	cout << "공격력과 방어력을 입력해 주세요.";
+	cin >> AD >> AM;
+	while (30 > AD || 30 > AM)
+	{
+		cout << "공격력과 방어력이 너무 낮습니다. 다시 입력해주세요.";
+		cin >> AD >> AM;
+	}
+
+	cout << "<스탯 관리 시스템>" << endl;
+	cout << "HP : " << HP << endl;
+	cout << "MP : " << MP << endl;
+	cout << "공격력 : " << AD << endl;
+	cout << "방어력 : " << AM << endl;
+
+	int mun;
+	int HPpotion = 5, MPpotion = 5;
+
+	while(true)//(0 < HPpotion || 0 < MPpotion || 7 == mun)
+	{
+		cout << "\n★번호를 선택해주세요.\n 1.HP회복\n 2.MP회복\n 3.HP강화\n 4.MP강화\n 5.공격 스킬 사용\n 6.게임이 종료되었습니다.\n";
+		cin >> mun;
+		switch (mun)
+		{
+			case 1:
+				if (0 < HPpotion)
+				{
+					HP += 20;
+					HPpotion--;
+					cout << "HP가 20회복되었습니다. HP포션이 1개 차감됩니다.";
+					cout << "현재 HP : " << HP << "\n남은 포션 수 : " << HPpotion;
+				}
+				else
+				{
+					cout << "HP포션이 모지랍니다.\n";
+				} break;
+
+			case 2:
+				if (0 < MPpotion)
+				{
+					MP += 20;
+					MPpotion--;
+					cout << "MP가 20회복되었습니다. MP포션이 1개 차감됩니다.";
+					cout << "현재 MP : " << MP << "\n남은 MP포션 수 : " << MPpotion;
+				} 
+				else
+				{
+					cout << "MP포션이 모지랍니다.\n";
+				} break;
+
+			case 3:
+					HP *= 2;
+					cout << "HP강화 2배로 늘어났습니다.\n" << HP;
+				break;
+
+			case 4:
+					MP *= 2;
+					cout << "MP강화 2배로 늘어났습니다.\n" << MP;
+				break;
+
+			case 5:
+				if (0 < MP)
+				{
+					MP -= 40;
+					cout << "스킬을 사용 하여 MP가 40 소모 되었습니다.\n" << MP;
+				}
+				else
+				{
+					cout << "MP가 모지랍니다.\n";
+				} break;
+			case 6:
+				return 0;
+		}
+	}
+		return 0;
+}
